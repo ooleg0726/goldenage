@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Registration</title>
+    <link rel="stylesheet" href="Style/styleregistration.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Include SweetAlert2 -->
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const checkbox = document.getElementById('agreeCheckbox');
+            const proceedButton = document.querySelector('.proceed-button');
+
+            proceedButton.addEventListener('click', function() {
+                if (!checkbox.checked) {
+                    // Show SweetAlert if checkbox is not checked
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Oops...',
+                        text: 'You need to agree to the terms before proceeding!',
+                    });
+                } else {
+                    // Show success alert if checkbox is checked
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Thank you!',
+                        text: 'You have successfully agreed to the terms.',
+                    }).then(() => {
+                        // You can submit the form or redirect here
+                        window.location.href = 'newregistrationform.html'; // Replace with your desired action
+                    });
+                }
+            });
+            function toggleMenu() {
+                const menuContainer = document.querySelector('.menu-container');
+                menuContainer.classList.toggle('show'); // Toggle visibility on small screens
+            }
+        });
+    </script>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="logo-section left-logos">
+                <img src="Images/images.png" alt="MSWD Logo" class="logo">
+                <img src="Images/Artboard 1.png" alt="Goldenage Logo" class="logo">
+                <span class="logo-label">Municipal Social Welfare and Development<br>San Manuel, Isabela</span>
+            </div>
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <div class="menu-container" id="menu">
+                <nav class="nav-links">
+                    <a href="index.php">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#services">Services</a>
+                </nav>
+
+                <div class="logo-section right-logos">
+                    <img src="Images/olplogo.png" alt="OLPCSMI Logo" class="logo">
+                    <img src="Images/bsitlogo.png" alt="BSIT Logo" class="logo">
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="registration-banner">
+        <div class="banner-content">
+            <h1>Online Registration</h1>
+            <p>All senior citizens of the country are invited to register with NCSC. By registering, the commission will be able to develop a comprehensive Elderly Database Management System or EDMS which will serve as a primary tool in creating plans, programs,
+                and activities that will help improve the lives of older Filipino persons.</p>
+            <a href="#" class="banner-button">Read more...</a>
+        </div>
+    </section>
+
+    <section class="notice-section">
+        <p>NOTICE: REGISTRATION IS FREE AND THE REGISTRATION FORM IS NOT FOR SALE</p>
+    </section>
+
+    <section class="register-section">
+        <h2>Register now and be counted today.</h2>
+        <form action="#">
+            <label>
+                <input type="checkbox" id="agreeCheckbox" required>
+                I agree and certify that I have read the above instruction and that I fully understand my participation in
+                the registration process for the cause of the commission.
+            </label>
+            <div class="form-actions">
+                <button type="button" class="proceed-button">Proceed</button>
+                <button type="button" class="decline-button" onclick="window.location.href='index.php';">Decline</button>
+            </div>
+        </form>
+        <a href="#" class="privacy-link">Read more on Data Privacy Law</a>
+        <div class="footer-logos">
+            <img src="Images/bsitlogo.png" alt="Logo 4" class="footer-logo">
+            <img src="Images/Artboard 1.png" alt="Logo 5" class="footer-logo">
+            <img src="Images/olplogo.png" alt="Logo 5" class="footer-logo">
+        </div>
+    </section>
+</body>
+
+</html>

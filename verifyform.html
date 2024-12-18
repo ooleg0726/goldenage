@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Style/verifyform.css">
+    <title>Verify Section</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const header = document.querySelector('header');
+            const logos = document.querySelectorAll('.logo');
+
+            window.addEventListener('scroll', function () {
+                if (window.scrollY > 50) {
+                    header.classList.add('header-scrolled');
+                    logos.forEach(logo => logo.classList.add('logo-scrolled'));
+                } else {
+                    header.classList.remove('header-scrolled');
+                    logos.forEach(logo => logo.classList.remove('logo-scrolled'));
+                }
+            });
+        });
+
+        function toggleMenu() {
+            const menuContainer = document.querySelector('.menu-container');
+            menuContainer.classList.toggle('show'); // Toggle visibility on small screens
+        }
+    </script>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="logo-section left-logos">
+                <img src="Images/images.png" alt="MSWD Logo" class="logo">
+                <img src="Images/Artboard 1.png" alt="Goldenage Logo" class="logo">
+                <span class="logo-label">Municipal Social Welfare and Development<br>San Manuel, Isabela</span>
+            </div>
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <div class="menu-container" id="menu">
+                <nav class="nav-links">
+                    <a href="index.php">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#services">Services</a>
+                </nav>
+                <div class="logo-section right-logos">
+                    <img src="Images/olplogo.png" alt="OLPCSMI Logo" class="logo">
+                    <img src="Images/bsitlogo.png" alt="BSIT Logo" class="logo">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="Verification">
+        <div class="content">
+            <div class="text-content">
+                <h1>Registration Verification</h1>
+            </div>
+        </div>
+    </section>
+
+    <section class="Verify-section">
+        <h1 class="description">Please select a method to verify your application</h1>
+        <p>Your SCID serves as your receipt of registration with us. So, if you already have one, there is no need to verify every time. For your safety, we do not permanently retain your record online. After a time, your record will be downloaded to our main facility for safekeeping.</p>
+
+        <form id="verifyForm" action="submit_verify.php" method="POST">
+
+            <div>
+                <input type="radio" id="rrnVerify" name="verificationMethod" value="RRN">
+                <label for="rrnVerify">Verify using Registration ID (SCID)</label>
+            </div>
+            <div>
+                <input type="radio" id="nameDobVerify" name="verificationMethod" value="NameDob">
+                <label for="nameDobVerify">Verify using exact Name and Birthday</label>
+            </div>
+           <!-- SCID Section (Initially Hidden) -->
+            <div id="scidSection" style="display: none;">
+                <h2 class="verification-header">VERIFICATION SENIOR CITIZEN ID</h2>
+                <p class="description">
+                    To verify your registration using your Senior Citizen ID (SCID), simply enter the ID exactly as it appears on your registration, and our system will confirm your details; please ensure accuracy to avoid any issues with retrieving your record.
+                </p>
+                <!-- Label on Top of Input Field -->
+                <div class="input-container">
+                    <label for="scidInput">Enter Senior Citizen ID:</label>
+                    <input type="text" id="scidInput" name="scidInput" placeholder="Enter SCID">
+                </div>
+                <!-- Description on the Right -->
+                <div class="description">
+                    Please enter your Senior Citizen ID for verification.
+                </div>
+                <!-- Button Container -->
+                <div class="button-container">
+                    <button type="button" id="submitBtn">Submit</button>
+                    <button type="button" id="cancelBtn">Cancel</button>
+                </div>
+            </div>
+
+
+
+            <!-- Name and Birthday Verification Section -->
+            <div id="nameDobSection" style="display: none;">
+                <h2 class="verification-header">VERIFICATION BY NAME AND BIRTHDAY</h2>
+                <p class="description">
+                    To verify using this option, you will be required to enter exactly the name and birth date as entered in your registration record, particularly in spelling and the exact date of birth. With just a slight difference on these entries, your record cannot be retrieved.
+                </p>
+
+                <!-- Name Section -->
+                <h3>ENTER COMPLETE NAME</h3>
+                <div class="name-section">
+                    <div class="input-container name-input">
+                        <label for="lastname">Lastname <span class="required">*</span></label>
+                        <input type="text" id="lastname" name="lastname" placeholder="Enter lastname">
+                    </div>
+                    <div class="input-container name-input">
+                        <label for="firstname">Firstname <span class="required">*</span></label>
+                        <input type="text" id="firstname" name="firstname" placeholder="Enter firstname">
+                    </div>
+                    <div class="input-container name-input">
+                        <label for="middleInitial">Middlename <span class="required">*</span></label>
+                        <input type="text" id="middleInitial" name="middleInitial" placeholder="Enter middlename">
+                    </div>
+                    <div class="input-container name-input">
+                        <label for="hasExtension">Suffix</label>
+                        <input type="text" id="suffix" name="suffix" placeholder="Extension (optional)">
+                    </div>
+                </div>
+                
+                <h3>ENTER BIRTHDAY</h3>
+                <div class="birthday-section">
+                    <div class="input-container birthday-input">
+                        <label for="birthYear">Year:</label>
+                        <select id="birthYear" name="birthYear">
+                            <option value="">Select year</option>
+                            <!-- Year options will be populated by JavaScript -->
+                        </select>
+                    </div>
+                    <div class="input-container birthday-input">
+                        <label for="birthMonth">Month:</label>
+                        <select id="birthMonth" name="birthMonth">
+                            <option value="">Select month</option>
+                            <!-- Month options will be populated by JavaScript -->
+                        </select>
+                    </div>
+                    <div class="input-container birthday-input">
+                        <label for="birthDay">Day:</label>
+                        <select id="birthDay" name="birthDay">
+                            <option value="">Select date</option>
+                            <!-- Day options will be populated by JavaScript -->
+                        </select>
+                    </div>
+                    
+                </div>
+
+
+                
+                <div class="button-container">
+                    <button type="button" id="submitNameDobBtn" class="submit-button">Submit</button>
+                    <button type="button" id="cancelNameDobBtn" class="cancel-button">Cancel</button>
+                </div>
+            </div>
+
+
+        </form>
+    </section>
+
+    <script src="javascript/verifyform.js"></script>
+</body>
+
+</html>

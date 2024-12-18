@@ -1,0 +1,70 @@
+document.addEventListener('DOMContentLoaded', function() {
+            const closeBtn = document.querySelector('.cookie-close');
+            const cookieBanner = document.querySelector('.cookie-consent-banner');
+
+            closeBtn.addEventListener('click', function() {
+                cookieBanner.style.display = 'none';
+            });
+        });
+
+.cookie-consent-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #f04e23; /* Match the background color */
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    font-size: 14px;
+}
+
+.cookie-consent-banner p {
+    margin: 0;
+    flex: 1;
+    padding-right: 20px;
+}
+
+.cookie-consent-banner a {
+    color: white;
+    text-decoration: underline;
+}
+
+.cookie-buttons {
+    display: flex;
+    align-items: center;
+}
+
+.cookie-buttons button {
+    background-color: white;
+    color: #f04e23;
+    border: none;
+    padding: 5px 10px;
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 4px;
+}
+
+.cookie-buttons .cookie-close {
+    background: none;
+    color: white;
+    font-size: 18px;
+    margin-left: 20px;
+    padding: 0;
+}
+
+.cookie-buttons .cookie-close:hover {
+    color: #ccc;
+}
+<div class="cookie-consent-banner">
+    <p>We use cookies on our website to see how you interact with them. By accepting, you agree to our use of such cookies. Data generated is not shared with any other party. For more info, see our <a href="#">Privacy Policy</a>.</p>
+    <div class="cookie-buttons">
+        <button class="cookie-settings">Settings</button>
+        <button class="cookie-accept">Accept</button>
+        <button class="cookie-close">&times;</button>
+    </div>
+</div>

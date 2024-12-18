@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="reprintid.css">
+    <title>Request Re-Print ID</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+
+<body>
+    <header>
+        <div class="container">
+            <div class="logo-section left-logos">
+                <img src="Images/images.png" alt="MSWD Logo" class="logo">
+                <img src="Images/Artboard 1.png" alt="Goldenage Logo" class="logo">
+                <span class="logo-label">Municipal Social Welfare and Development<br>San Manuel, Isabela</span>
+            </div>
+
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+            <div class="menu-container" id="menu">
+                <nav class="nav-links">
+                    <a href="index.php">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#services">Services</a>
+                </nav>
+
+                <div class="logo-section right-logos">
+                    <img src="Images/olplogo.png" alt="OLPCSMI Logo" class="logo">
+                    <img src="Images/bsitlogo.png" alt="BSIT Logo" class="logo">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="Verification">
+        <div class="content">
+            <div class="text-content">
+                <h1>Request Re-Print for ID</h1>
+            </div>
+        </div>
+    </section>
+
+    <form id="reprintForm" action="submit_requestid.php" method="post" enctype="multipart/form-data">
+        
+        <div class="form-header">
+            <h2>Re-Print ID Request Form</h2>
+            <p>Please fill out the form to request a re-print of your Senior Citizen ID. Provide the required information and upload your photo.</p>
+        </div>
+        <h3>ENTER COMPLETE NAME</h3>
+                <div class="name-section">
+                    <div class="input-container name-input">
+                        <label for="lastname">Lastname <span class="required">*</span></label>
+                        <input type="text" id="lastname" name="lastname" placeholder="Enter lastname">
+                    </div>
+                    <div class="input-container name-input">
+                        <label for="firstname">Firstname <span class="required">*</span></label>
+                        <input type="text" id="firstname" name="firstname" placeholder="Enter firstname">
+                    </div>
+                    <div class="input-container name-input">
+                        <label for="middleInitial">Middlename <span class="required">*</span></label>
+                        <input type="text" id="middleInitial" name="middleInitial" placeholder="Enter middlename">
+                    </div>
+                    <div class="input-container name-input">
+                        <label for="hasExtension">Suffix</label>
+                        <input type="text" id="suffix" name="suffix" placeholder="Extension (optional)">
+                    </div>
+                </div>
+        <h3>ENTER BIRTHDAY</h3>
+                <div class="birthday-section">
+                    <div class="input-container birthday-input">
+                        <label for="birthYear">Year:</label>
+                        <select id="birthYear" name="birthYear">
+                            <option value="">Select year</option>
+                            <!-- Year options will be populated by JavaScript -->
+                        </select>
+                    </div>
+                    <div class="input-container birthday-input">
+                        <label for="birthMonth">Month:</label>
+                        <select id="birthMonth" name="birthMonth">
+                            <option value="">Select month</option>
+                            <!-- Month options will be populated by JavaScript -->
+                        </select>
+                    </div>
+                    <div class="input-container birthday-input">
+                        <label for="birthDay">Day:</label>
+                        <select id="birthDay" name="birthDay">
+                            <option value="">Select date</option>
+                            <!-- Day options will be populated by JavaScript -->
+                        </select>
+                    </div>
+                    
+                    
+                </div>
+        
+    
+                <div class="form-group">
+                    <label for="requestDate">Request Date:</label>
+                    <input type="date" id="requestDate" name="requestDate" required disabled>
+                </div>
+                
+        
+        <div class="form-group">
+            <label for="reason">Reason for Re-Print:</label>
+            <textarea id="reason" name="reason" rows="4" placeholder="Enter the reason for re-printing the ID" ></textarea>
+        </div>
+       
+        <div class="form-group reason-section">
+            <div class="left-side">
+                <div class="photo-container" id="photoContainer">
+                    <!-- Video stream for camera capture -->
+                    <video id="id-preview" class="photo-preview" autoplay style="display: none;"></video>
+                    <!-- Placeholder image until a photo is uploaded or captured -->
+                    <img id="id-placeholder" src="Images/placeholder.png" alt="Reason Photo Preview" class="photo-preview">
+                    <!-- Close camera button -->
+                    <button type="button" id="close-id-camera-btn" class="close-camera-btn" style="display: none;">&times;</button>
+                </div>
+                <div class="upload-button">
+                    <!-- Button to open the camera -->
+                    <button type="button" id="open-reason-camera-btn" class="upload-reason-btn">Open Camera</button>
+                    <!-- Button to capture the photo -->
+                    <button type="button" id="capture-reason-btn" class="upload-reason-btn" style="display: none;">Capture Reason Photo</button>
+                    <!-- Button to upload a photo -->
+                    <button type="button" id="custom-upload-reason-btn" class="upload-reason-btn" onclick="document.getElementById('upload-reason-file').click();">Upload Photo</button>
+                    <!-- Hidden file input for image upload -->
+                    <input type="file" id="upload-reason-file" name="upload-reason-file" class="upload-reason-btn" accept="image/*" style="display: none;" onchange="previewImage(event)">
+                    <input type="hidden" id="captured-reason-data" name="captured-reason-data">
+                </div>
+            </div>
+            <div class="right-side-reason">
+                <p>Please attach a photo showing the reason for requesting a re-print of your ID (e.g., damaged or lost ID).</p>
+                <p class="red-text">Ensure that the image is clear. Blurry images may result in a rejected application.</p>
+                <p><span class="warning-icon">⚠️</span> Only attach images that are less than 10MB in size.</p>
+            </div>
+        </div>
+
+        
+        
+    
+        <div class="form-group">
+            <button type="submit" class="submit-btn">Submit</button>
+            <button type="button" id="cancelBtn">Close</button>
+        </div>
+        
+    </form>
+
+    
+    
+
+    <script src="javascript/reprintid.js"></script>
+   <script>
+    function toggleMenu() {
+        const menuContainer = document.querySelector('.menu-container');
+        menuContainer.classList.toggle('show'); // Toggle visibility on small screens
+    }
+   </script>
+   <script>
+    document.getElementById("reprintForm").addEventListener("submit", function (e) {
+        // Prevent the form from submitting immediately
+        e.preventDefault();
+
+        // List of required fields in your form
+        const requiredFields = [
+            'lastname', 'firstname', 'middleInitial',
+            'birthYear', 'birthMonth', 'birthDay', 'requestDate', 'reason'
+        ];
+
+        let missingFields = [];
+
+        // Check if each field is empty
+        requiredFields.forEach(field => {
+            const element = document.getElementById(field) || document.getElementsByName(field);
+            if (Array.isArray(element)) {
+                // If the element is an array (like beneficiary_name[]), check if each one is filled
+                const isEmpty = Array.from(element).every(el => !el.value.trim());
+                if (isEmpty) missingFields.push(field);
+            } else {
+                if (!element.value.trim()) missingFields.push(field);
+            }
+        });
+
+        // If any required fields are missing, show an error message
+        if (missingFields.length > 0) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Missing Fields',
+                text: 'Please fill out all required fields.',
+            });
+            return;
+        }
+
+        // Show confirmation dialog
+        Swal.fire({
+            title: 'Submit Request?',
+            text: "Are you sure you want to submit this request?",
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, submit it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // If confirmed, submit the form
+                e.target.submit();  // Submit the form
+
+                // Show success message
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Submitted!',
+                    text: 'Your request has been submitted successfully.',
+                });
+            }
+        });
+    });
+</script>
+        
+   
+</body>
+
+</html>

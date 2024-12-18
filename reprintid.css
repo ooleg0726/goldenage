@@ -1,0 +1,540 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background: linear-gradient(to right, #e62314, #f19e18);
+    position: relative;
+    z-index: 10;
+}
+
+header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transition: background-color 0.3s ease, padding 0.3s ease;
+    z-index: 1000;
+    color: #fff; /* White font color for header text */
+}
+
+.logo-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.left-logos, .menu-container {
+    display: flex;
+    align-items: center;
+}
+
+.left-logos, .right-logos {
+    display: flex;
+    align-items: center;
+}
+.left-logos .logo {
+    margin-right: 10px; /* Adjust spacing between left logos */
+}
+
+.right-logos .logo {
+    margin-left: 10px; /* Adjust spacing between right logos */
+}
+
+.logo {
+    height: 50px;
+    margin-right: 10px;
+    transition: height 0.3s;
+}
+
+.logo-label {
+    color: white;
+    font-weight: bold;
+    line-height: 1.2;
+    text-align: left;
+    white-space: normal;
+    word-wrap: break-word;
+    max-width: 100%;
+}
+
+
+
+.nav-links {
+    display: flex;
+    gap: 20px; /* Adjusts spacing between navigation links */
+    margin-right: 20px; /* Adds space between the last logo and the menu */
+}
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 5px;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50%;
+    height: 2px;
+    background-color: yellow;
+}
+
+.menu-toggle {
+    display: none;
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #fff; /* White color for menu toggle button */
+}
+
+.menu-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* Media Queries for Small Screens */
+@media (max-width: 768px) {
+    header {
+        padding: px 0;
+    }
+
+    .logo {
+        height: 40px;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .menu-container {
+        display: none;
+        position: fixed;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: linear-gradient(to right, #e62314, #f19e18);
+        flex-direction: column;
+        opacity: 0.9;
+        transition: opacity 0.3s;
+    }
+
+    .menu-container.show {
+        display: flex;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .nav-links a {
+        padding: 10px 0;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-label {
+        font-size: 12px;
+        line-height: 1.1;
+    }
+
+    .logo {
+        height: 30px;
+    }
+
+    .menu-container {
+        width: 100%;
+    }
+}
+
+
+/* Verification Section */
+.Verification {
+    background: linear-gradient(to right, #e62314, #f19e18);
+    color: white;
+    padding: 40px 0; /* Adjust the padding as needed */
+    margin-top: 50px; /* Adjust the margin-top as needed */
+}
+
+.Verification .content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.text-content h1 {
+    font-size: 36px;
+    color: #fffbfb;
+    margin: 0;
+    text-align: center;
+    line-height: 1.2;
+    font-weight: bold;
+}
+
+@media (min-width: 1024px) {
+    .text-content h1 {
+        font-size: 48px;
+    }
+}
+
+/* General Form Styles */
+/* Form Styles */
+form {
+    max-width: 1000px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 0; /* No rounded corners */
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #333;
+}
+
+input[type="text"],
+input[type="date"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #e53e3e;
+    border-radius: 0; /* Sharp edges */
+    font-size: 16px;
+    color: #333;
+    box-sizing: border-box;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #e53e3e; /* Orange outline */
+    border-radius: 0; /* Sharp edges */
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 14px;
+    resize: vertical;
+}
+
+/* Reason Section Styles */
+.reason-section {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.left-side {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+}
+
+.photo-container {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    border: 2px solid #e53e3e;
+    border-radius: 0; /* Sharp edges */
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f7f7f7;
+    margin-bottom: 20px;
+}
+
+.photo-preview {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.close-camera-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(229, 62, 62, 0.8);
+    color: white;
+    border: none;
+    padding: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+/* Container for buttons in one row */
+.button-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    width: 100%; /* Ensure container spans the full width */
+}
+
+/* Upload Button and Open Camera Button */
+
+.open-camera-btn {
+    background-color: #e53e3e;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    width: 150px; /* Set a specific width for both buttons */
+    height: 50px; /* Set a specific height */
+    text-align: center;
+    border-radius: 0; /* Sharp edges */
+    transition: background-color 0.3s;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 14px;
+    display: inline-block;
+}
+
+
+.upload-button {
+    margin-top: 10px; /* Adjust the margin as needed */
+    display: flex;
+    flex-direction: row;
+    gap: 10px; /* Adjust space between buttons */
+}
+
+.upload-reason-btn {
+    background-color: #e53e3e;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 0; /* Sharp edges */
+    transition: background-color 0.3s;
+}
+/* Hover effect for Open Camera Button */
+.open-camera-btn:hover {
+    background-color: #d53a3a; /* Slightly darker red */
+    transform: scale(1.05); /* Slightly enlarge button */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+/* Hover effect for Upload Reason Button */
+.upload-reason-btn:hover {
+    background-color: #d53a3a; /* Slightly darker red */
+    transform: scale(1.05); /* Slightly enlarge button */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+
+
+
+
+.upload-note {
+    font-size: 12px;
+    color: #555;
+    margin-top: 5px;
+}
+
+#upload-reason-file {
+    display: none;
+}
+
+.right-side-reason {
+    flex: 1;
+    max-width: 700px;
+    padding-left: 20px;
+}
+
+.right-side-reason p {
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 14px;
+    color: #333;
+}
+
+.red-text {
+    color: #e53e3e;
+    font-weight: bold;
+}
+
+.warning-icon {
+    color: #e53e3e;
+    font-size: 18px;
+    margin-right: 5px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .reason-section {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .right-side-reason {
+        padding-left: 0;
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .left-side {
+        width: 100%;
+        max-width: 400px;
+    }
+}
+
+
+/* Submit Button */
+.submit-btn {
+    background-color: #e53e3e;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 0; /* Sharp edges */
+    transition: background-color 0.3s;
+    width: 200px;
+}
+
+.submit-btn:hover {
+    background-color: #d53a3a;
+}
+
+/* Hover effect for Submit Button */
+.submit-btn:hover {
+    background-color: #d53a3a; /* Slightly darker red */
+    transform: scale(1.05); /* Slightly enlarge button */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+}
+
+/* Cancel Button */
+#cancelBtn {
+    background-color: white;
+    color: #e53e3e;
+    border: 1px solid #e53e3e; /* Add a border to match the style */
+    padding: 10px 20px;
+    font-weight: bold;
+    border-radius: 0; /* Sharp edges */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
+    font-size: 16px;
+    width: 200px;
+    margin-left: 10px;
+}
+
+#cancelBtn:hover {
+    background-color: #fff5f5; /* Light red background on hover */
+    color: #c53030; /* Slightly darker red text color on hover */
+}
+
+/* Hover effect for Cancel Button */
+#cancelBtn:hover {
+    background-color: #fff5f5; /* Light red background */
+    color: #c53030; /* Darker red text */
+    transform: scale(1.05); /* Slightly enlarge button */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+}
+
+
+
+
+/* Container styling for the name section */
+.name-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px; /* Space between each field */
+}
+
+/* Styling for each input container */
+.input-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1; /* Allows each field to adjust based on available space */
+    min-width: 150px; /* Ensures fields don’t become too narrow */
+}
+
+/* Input field styling with red border by default and black on focus */
+input[type="text"] {
+    padding: 8px;
+    border: 2px solid #e53e3e; /* Default red border */
+    border-radius: 0; /* Sharp edges */
+    font-size: 14px;
+    outline: none; /* Remove default outline */
+    transition: border-color 0.3s ease; /* Smooth transition */
+}
+
+input[type="text"]:focus {
+    border-color: #000; /* Black border on focus */
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.required {
+    color: red; /* Indicates required fields */
+}
+
+/* Container styling for the birthday section */
+.birthday-section {
+    display: flex;
+    gap: 15px; /* Space between each field */
+}
+
+/* Styling for each input container in the birthday section */
+.input-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1; /* Allows each field to adjust based on available space */
+    min-width: 120px; /* Ensures fields don’t become too narrow */
+    margin-bottom: 15px; /* Adds bottom margin */
+}
+
+/* Select dropdown styling with sharp edges and default red border */
+select {
+    padding: 8px;
+    border: 2px solid #e53e3e; /* Default red border */
+    border-radius: 0; /* Sharp edges */
+    font-size: 14px;
+    outline: none; /* Remove default outline */
+    transition: border-color 0.3s ease; /* Smooth transition */
+}
+
+/* Focus state for select elements */
+select:focus {
+    border-color: #000; /* Black border on focus */
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.required {
+    color: red; /* Indicates required fields */
+}
+
+

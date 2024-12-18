@@ -1,0 +1,497 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background: linear-gradient(to right, #e62314, #f19e18);
+    position: relative;
+    z-index: 10;
+}
+
+header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transition: background-color 0.3s ease, padding 0.3s ease;
+    z-index: 1000;
+    color: #fff; /* White font color for header text */
+}
+
+.logo-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.left-logos, .menu-container {
+    display: flex;
+    align-items: center;
+}
+
+.left-logos, .right-logos {
+    display: flex;
+    align-items: center;
+}
+.left-logos .logo {
+    margin-right: 10px; /* Adjust spacing between left logos */
+}
+
+.right-logos .logo {
+    margin-left: 10px; /* Adjust spacing between right logos */
+}
+
+.logo {
+    height: 50px;
+    margin-right: 10px;
+    transition: height 0.3s;
+}
+
+.logo-label {
+    color: white;
+    font-weight: bold;
+    line-height: 1.2;
+    text-align: left;
+    white-space: normal;
+    word-wrap: break-word;
+    max-width: 100%;
+}
+
+
+
+.nav-links {
+    display: flex;
+    gap: 20px; /* Adjusts spacing between navigation links */
+    margin-right: 20px; /* Adds space between the last logo and the menu */
+}
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 5px;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50%;
+    height: 2px;
+    background-color: yellow;
+}
+
+.menu-toggle {
+    display: none;
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #fff; /* White color for menu toggle button */
+}
+
+.menu-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* Media Queries for Small Screens */
+@media (max-width: 768px) {
+    header {
+        padding: 0px 0;
+    }
+
+    .logo {
+        height: 40px;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .menu-container {
+        display: none;
+        position: fixed;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: linear-gradient(to right, #e62314, #f19e18);
+        flex-direction: column;
+        opacity: 0.9;
+        transition: opacity 0.3s;
+    }
+
+    .menu-container.show {
+        display: flex;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .nav-links a {
+        padding: 10px 0;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-label {
+        font-size: 12px;
+        line-height: 1.1;
+    }
+
+    .logo {
+        height: 30px;
+    }
+
+    .menu-container {
+        width: 100%;
+    }
+}
+/* Verification Section */
+.Verification {
+    background: linear-gradient(to right, #e62314, #f19e18);
+    color: white;
+    padding: 40px 0; /* Adjust the padding as needed */
+    margin-top: 60px; /* Adjust the margin-top as needed */
+}
+
+.Verification .content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.text-content h1 {
+    font-size: 36px;
+    color: #fffbfb;
+    margin: 0;
+    text-align: center;
+    line-height: 1.2;
+    font-weight: bold;
+}
+
+@media (min-width: 1024px) {
+    .text-content h1 {
+        font-size: 48px;
+    }
+}
+
+/* Verification Form */
+.Verify-section {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 1000px;
+    margin: 40px auto;
+}
+
+.Verify-section h1.description {
+    font-size: 26px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+}
+
+.Verify-section p {
+    font-size: 16px;
+    margin-bottom: 20px;
+    line-height: 1.6;
+    color: #666;
+}
+
+form div {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: left;
+}
+
+form input[type="radio"] {
+    margin-right: 10px;
+}
+
+form label {
+    font-size: 16px;
+}
+
+/* SCID Section Layout */
+#scidSection {
+    margin-top: 20px;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    gap: 10px;
+    align-items: start;
+}
+
+/* Input Container with Label on Top */
+.input-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.input-container label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+#scidInput {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #e53e3e;
+    border-radius: 1px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+/* Description Styling */
+.description {
+    font-size: 16px;
+    color: #555;
+    align-self: start;
+}
+
+/* Button Container and Styling */
+.button-container {
+    grid-column: span 2;
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+    justify-content: flex-start;
+}
+
+/* Button Styling */
+button {
+    padding: 10px 15px;
+    border: 1px solid #e53e3e;
+    border-radius: 1px;
+    cursor: pointer;
+    font-size: 14px;
+    width: 150px;
+    transition: background-color 0.3s;
+}
+
+#submitBtn {
+    background-color: #e53e3e;
+    color: white;
+}
+
+#submitBtn:hover {
+    background-color: #c53030;
+}
+
+#cancelBtn {
+    background-color: white;
+    color: #e53e3e;
+}
+
+#cancelBtn:hover {
+    background-color: #fff5f5;
+}
+
+/* Responsive Design for Small Screens */
+@media (max-width: 768px) {
+    #scidSection {
+        grid-template-columns: 1fr;
+    }
+
+    .button-container {
+        justify-content: flex-start;
+    }
+}
+
+/* Common Input Styles */
+input[type="text"],
+input[type="number"],
+select {
+    border: 1px solid #e53e3e;
+    border-radius: 4px;
+    padding: 8px;
+    font-size: 14px;
+    width: 100%;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: #ed8936;
+}
+
+/* SCID Verification Styles */
+#scidSection .input-container input,
+#scidSection .input-container select {
+    border-color: #e53e3e;
+}
+
+#scidSection #submitScidBtn1 {
+    background-color: #e53e3e;
+    border-color: #e53e3e;
+}
+
+#scidSection #cancelScidBtn1 {
+    background-color: white;
+    color: #e53e3e;
+    border-color: #e53e3e;
+}
+
+#scidSection #cancelScidBtn1:hover {
+    background-color: #fff5f5;
+}
+.name-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.name-input {
+    flex: 1;
+    min-width: 150px;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between checkbox, label, and input */
+    flex: 1;
+    min-width: 200px; /* Ensures the container is wide enough */
+}
+
+.checkbox-container input[type="text"] {
+    width: 120px; /* Width of the suffix text box */
+    margin-left: 10px;
+}
+
+.birthday-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Space between the inputs */
+}
+
+.birthday-input {
+    flex: 1;
+    min-width: 150px;
+}
+
+.birthday-input select, 
+.birthday-input input {
+    width: 100%; /* Ensures input and select elements take full width of their container */
+}
+
+/* Name and Birthday Verification Styles */
+#nameDobSection {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.verification-header {
+    text-align: left;
+    font-size: 24px;
+    color: #a71313;
+    margin-bottom: 15px;
+}
+
+.description {
+    text-align: left;
+    color: #555;
+    font-size: 12px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.name-section h3, .birthday-section h3 {
+    margin-bottom: 15px;
+    font-size: 20px;
+    color: #333;
+}
+
+.input-container {
+    margin-bottom: 15px;
+}
+
+.input-container label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.input-container input, 
+.input-container select {
+    padding: 10px;
+    border: 1px solid #e53e3e;
+    font-size: 14px;
+    width: 100%;
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    border-radius: 0; /* Ensure sharp edges (no rounding) */
+}
+
+/* Checkbox Container */
+.checkbox-container {
+    display: flex;
+    align-items: center;
+}
+
+.checkbox-container input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+.checkbox-container input[type="text"] {
+    margin-left: 10px;
+    border: 1px solid #e53e3e;
+    padding: 10px;
+    border-radius: 0; /* Ensure sharp edges (no rounding) */
+}
+
+/* Button Styles */
+.button-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.submit-button,
+.cancel-button {
+    padding: 10px 20px;
+    font-size: 14px;
+    border: 1px solid #e53e3e;
+    cursor: pointer;
+    background: none;
+    color: #e53e3e;
+}
+
+.submit-button {
+    background-color: #e53e3e;
+    color: white;
+}
+
+.submit-button:hover {
+    background-color: #d67c2c;
+}
+
+.cancel-button:hover {
+    background-color: #fff5f5;
+}
+
+/* Ensure sharp edges (no border-radius) for all inputs, select, and textarea elements */
+input, select, textarea {
+    border-radius: 0; /* Sharp edges for all input elements */
+}

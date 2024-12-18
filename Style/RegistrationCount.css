@@ -1,0 +1,261 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background: linear-gradient(to right, #e62314, #f19e18);
+    position: relative;
+    z-index: 10;
+}
+
+header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transition: background-color 0.3s ease, padding 0.3s ease;
+    z-index: 1000;
+    color: #fff; /* White font color for header text */
+}
+
+.logo-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.left-logos, .menu-container {
+    display: flex;
+    align-items: center;
+}
+
+.left-logos, .right-logos {
+    display: flex;
+    align-items: center;
+}
+.left-logos .logo {
+    margin-right: 10px; /* Adjust spacing between left logos */
+}
+
+.right-logos .logo {
+    margin-left: 10px; /* Adjust spacing between right logos */
+}
+
+.logo {
+    height: 50px;
+    margin-right: 10px;
+    transition: height 0.3s;
+}
+
+.logo-label {
+    color: white;
+    font-weight: bold;
+    line-height: 1.2;
+    text-align: left;
+    white-space: normal;
+    word-wrap: break-word;
+    max-width: 100%;
+}
+
+
+
+.nav-links {
+    display: flex;
+    gap: 20px; /* Adjusts spacing between navigation links */
+    margin-right: 20px; /* Adds space between the last logo and the menu */
+}
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 5px;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50%;
+    height: 2px;
+    background-color: yellow;
+}
+
+.menu-toggle {
+    display: none;
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #fff; /* White color for menu toggle button */
+}
+
+.menu-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* Media Queries for Small Screens */
+@media (max-width: 768px) {
+    header {
+        padding: 0px 0;
+    }
+
+    .logo {
+        height: 40px;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .menu-container {
+        display: none;
+        position: fixed;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: linear-gradient(to right, #e62314, #f19e18);
+        flex-direction: column;
+        opacity: 0.9;
+        transition: opacity 0.3s;
+    }
+
+    .menu-container.show {
+        display: flex;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .nav-links a {
+        padding: 10px 0;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-label {
+        font-size: 12px;
+        line-height: 1.1;
+    }
+
+    .logo {
+        height: 30px;
+    }
+
+    .menu-container {
+        width: 100%;
+    }
+}
+
+.RegistrationCount {
+    text-align: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+    margin-top: 80px; /* Adjust to match or exceed header height */
+}
+
+
+.RegistrationCount h1 {
+    font-size: 2em;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.RegistrationCount h2 {
+    font-size: 1.5em;
+    margin-bottom: 5px;
+    color: #666;
+}
+
+.RegistrationCount p {
+    font-size: 1em;
+    color: #444;
+}
+
+.registration-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 16px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.registration-table thead {
+    background-color: #e62314;
+    color: white;
+}
+
+.registration-table th,
+.registration-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.registration-table th {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.registration-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.registration-table tbody tr:nth-child(odd) {
+    background-color: #fff;
+}
+
+.registration-table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+.registration-table td {
+    color: #333;
+}
+
+.registration-table tfoot tr {
+    font-weight: bold;
+    background-color: #f0f0f0;
+}
+
+.registration-table tfoot td {
+    text-align: center;
+    border-top: 2px solid #ccc;
+}
+.ChoroplethMap {
+    display: flex; /* Enables Flexbox layout */
+    flex-direction: column; /* Stacks items vertically */
+    justify-content: center; /* Centers items vertically */
+    align-items: center; /* Centers items horizontally */
+    height: 100vh; /* Full viewport height */
+    text-align: center; /* Centers the heading text */
+}
+
+#map {
+    height: 500px;
+    width: 600px;
+    margin-top: 20px; /* Adds space between the heading and the map */
+}
+
+

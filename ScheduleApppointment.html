@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Style/AppointmentSchedule.css">
+    <title>Appointment Schedule</title>
+    <!-- Include SweetAlert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const header = document.querySelector('header');
+            const logos = document.querySelectorAll('.logo');
+
+            window.addEventListener('scroll', function () {
+                if (window.scrollY > 50) {
+                    header.classList.add('header-scrolled');
+                    logos.forEach(logo => logo.classList.add('logo-scrolled'));
+                } else {
+                    header.classList.remove('header-scrolled');
+                    logos.forEach(logo => logo.classList.remove('logo-scrolled'));
+                }
+            });
+        });
+
+        function toggleMenu() {
+            const menuContainer = document.querySelector('.menu-container');
+            menuContainer.classList.toggle('show'); // Toggle visibility on small screens
+        }
+    </script>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="logo-section">
+                <img src="Images/images.png" alt="MSWD Logo" class="logo">
+                <img src="Images/Artboard 1.png" alt="Goldenage Logo" class="logo">
+                <span class="logo-label">Municipal Social Welfare and Development<br>San Manuel, Isabela</span>
+            </div>
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <div class="menu-container">
+                <nav class="nav-links">
+                    <a href="index.php">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#services">Services</a>
+                </nav>
+                <div class="logo-section right-logos">
+                    <img src="Images/olplogo.png" alt="OLPCSMI Logo" class="logo">
+                    <img src="Images/bsitlogo.png" alt="BSIT Logo" class="logo">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="Appointment">
+        <div class="content">
+            <div class="text-content">
+                <h1>Appointment Schedule</h1>
+            </div>
+        </div>
+    </section>
+    
+    <form id="appointment-form" action="submitAppointment.php" method="post">
+        <h1>Appointment Schedule</h1>
+        <p class="description">
+            Schedule your appointment using the form below. Please provide all required information, including your SCID, appointment date, time, and the purpose of your visit. This will help us to better prepare for your appointment and serve you efficiently.
+        </p>
+        <h3>ENTER COMPLETE NAME</h3>
+        <div class="name-section">
+            <div class="input-container name-input">
+                <label for="lastname">Lastname <span class="required">*</span></label>
+                <input type="text" id="lastname" name="lastname" placeholder="Enter lastname">
+            </div>
+            <div class="input-container name-input">
+                <label for="firstname">Firstname <span class="required">*</span></label>
+                <input type="text" id="firstname" name="firstname" placeholder="Enter firstname">
+            </div>
+            <div class="input-container name-input">
+                <label for="middleInitial">Middlename <span class="required">*</span></label>
+                <input type="text" id="middleInitial" name="middleInitial" placeholder="Enter middlename">
+            </div>
+            <div class="input-container name-input">
+                <label for="hasExtension">Suffix</label>
+                <input type="text" id="suffix" name="suffix" placeholder="Extension (optional)">
+            </div>
+        </div>
+        <h3>ENTER BIRTHDAY</h3>
+        <div class="birthday-section">
+            <div class="input-container birthday-input">
+                <label for="birthYear">Year:</label>
+                <select id="birthYear" name="birthYear">
+                    <option value="">Select year</option>
+                    <!-- Year options will be populated by JavaScript -->
+                </select>
+            </div>
+            <div class="input-container birthday-input">
+                <label for="birthMonth">Month:</label>
+                <select id="birthMonth" name="birthMonth">
+                    <option value="">Select month</option>
+                    <!-- Month options will be populated by JavaScript -->
+                </select>
+            </div>
+            <div class="input-container birthday-input">
+                <label for="birthDay">Day:</label>
+                <select id="birthDay" name="birthDay">
+                    <option value="">Select date</option>
+                    <!-- Day options will be populated by JavaScript -->
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="appointment-date">Appointment Date:</label>
+            <input type="date" id="appointment-date" name="appointment-date" required>
+        </div>
+        <div class="form-group">
+            <label for="appointment-time">Appointment Time:</label>
+            <input type="time" id="appointment-time" name="appointment-time" required min="09:00" max="17:00">
+        </div>
+        <div class="form-group">
+            <label for="appointment-content">Appointment Content:</label>
+            <select id="appointment-content" name="appointment-content" required>
+                <option value="" disabled selected>Select content</option>
+                <option value="consultation">Consultation</option>
+                <option value="follow-up">Follow-up</option>
+                <option value="report">Report</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+        <button type="submit" class="submit-btn">Submit</button>
+    </form>
+
+    <script src="javascript/appointment.js"></script>
+    <script>
+        document.querySelector('.submit-btn').addEventListener('click', function (event) {
+            event.preventDefault(); // Prevent form submission
+        
+            const lastname = document.getElementById('lastname').value.trim();
+            const firstname = document.getElementById('firstname').value.trim();
+            const middleInitial = document.getElementById('middleInitial').value.trim();
+            const birthYear = document.getElementById('birthYear').value.trim();
+            const birthMonth = document.getElementById('birthMonth').value.trim();
+            const birthDay = document.getElementById('birthDay').value.trim();
+            const appointmentDate = document.getElementById('appointment-date').value.trim();
+            const appointmentTime = document.getElementById('appointment-time').value.trim();
+            const appointmentContent = document.getElementById('appointment-content').value.trim();
+        
+            // Check if all required fields are filled
+            if (!lastname || !firstname || !middleInitial || !birthYear || !birthMonth || !birthDay || !appointmentDate || !appointmentTime || !appointmentContent) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Missing Fields',
+                    text: 'Please fill in all the required fields.',
+                    confirmButtonColor: '#e53e3e',
+                });
+                return;
+            }
+        
+            // Form data
+            const formData = new FormData(document.getElementById('appointment-form'));
+        
+            // Submit the form using fetch and handle the response
+            fetch('submitAppointment.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Success!',
+                        text: data.message,
+                        confirmButtonColor: '#e53e3e',
+                    }).then(() => {
+                        // Optionally reset the form or redirect
+                        document.getElementById('appointment-form').reset();
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error!',
+                        text: data.message,
+                        confirmButtonColor: '#e53e3e',
+                    });
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error!',
+                    text: 'An unexpected error occurred. Please try again later.',
+                    confirmButtonColor: '#e53e3e',
+                });
+            });
+        });
+        
+    </script>
+</body>
+
+</html>

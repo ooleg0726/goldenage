@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="Style/header.css">
+    <title>Index</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const header = document.querySelector('header');
+            const logos = document.querySelectorAll('.logo');
+
+            window.addEventListener('scroll', function () {
+                if (window.scrollY > 50) {
+                    header.classList.add('header-scrolled');
+                    logos.forEach(logo => logo.classList.add('logo-scrolled'));
+                } else {
+                    header.classList.remove('header-scrolled');
+                    logos.forEach(logo => logo.classList.remove('logo-scrolled'));
+                }
+            });
+        });
+
+        function toggleMenu() {
+            const menuContainer = document.querySelector('.menu-container');
+            menuContainer.classList.toggle('show'); // Toggle visibility on small screens
+        }
+    </script>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="logo-section left-logos">
+                <img src="Images/images.png" alt="MSWD Logo" class="logo">
+                <img src="Images/Artboard 1.png" alt="Goldenage Logo" class="logo">
+                <span class="logo-label">Municipal Social Welfare and Development<br>San Manuel, Isabela</span>
+            </div>
+
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+            <div class="menu-container" id="menu">
+                <nav class="nav-links">
+                    <a href="index.php">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#services">Services</a>
+                </nav>
+
+                <div class="logo-section right-logos">
+                    <img src="Images/olplogo.png" alt="OLPCSMI Logo" class="logo">
+                    <img src="Images/bsitlogo.png" alt="BSIT Logo" class="logo">
+                </div>
+            </div>
+        </div>
+    </header>
+
+</body>
+
+</html>

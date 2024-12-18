@@ -1,0 +1,507 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background: linear-gradient(to right, #e62314, #f19e18);
+    position: relative;
+    z-index: 10;
+}
+
+header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transition: background-color 0.3s ease, padding 0.3s ease;
+    z-index: 1000;
+    color: #fff; /* White font color for header text */
+}
+
+.logo-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.left-logos, .menu-container {
+    display: flex;
+    align-items: center;
+}
+
+.left-logos, .right-logos {
+    display: flex;
+    align-items: center;
+}
+.left-logos .logo {
+    margin-right: 10px; /* Adjust spacing between left logos */
+}
+
+.right-logos .logo {
+    margin-left: 10px; /* Adjust spacing between right logos */
+}
+
+.logo {
+    height: 50px;
+    margin-right: 10px;
+    transition: height 0.3s;
+}
+
+.logo-label {
+    color: white;
+    font-weight: bold;
+    line-height: 1.2;
+    text-align: left;
+    white-space: normal;
+    word-wrap: break-word;
+    max-width: 100%;
+}
+
+
+
+.nav-links {
+    display: flex;
+    gap: 20px; /* Adjusts spacing between navigation links */
+    margin-right: 20px; /* Adds space between the last logo and the menu */
+}
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 5px;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50%;
+    height: 2px;
+    background-color: yellow;
+}
+
+.menu-toggle {
+    display: none;
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #fff; /* White color for menu toggle button */
+}
+
+.menu-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* Media Queries for Small Screens */
+@media (max-width: 768px) {
+    header {
+        padding: 0px 0;
+    }
+
+    .logo {
+        height: 40px;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .menu-container {
+        display: none;
+        position: fixed;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: linear-gradient(to right, #e62314, #f19e18);
+        flex-direction: column;
+        opacity: 0.9;
+        transition: opacity 0.3s;
+    }
+
+    .menu-container.show {
+        display: flex;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .nav-links a {
+        padding: 10px 0;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-label {
+        font-size: 12px;
+        line-height: 1.1;
+    }
+
+    .logo {
+        height: 30px;
+    }
+
+    .menu-container {
+        width: 100%;
+    }
+}
+
+
+.registration-title {
+    text-align: center;
+    margin-top:50px;  /* Add spacing from the header */
+    padding: 20px 0;    /* Add padding for better spacing */
+    z-index: 10;        /* Ensure it appears above other elements */
+    position: relative; /* Ensure the position context is set */
+}
+
+.registration-title h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.registration-title h2 {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+.registration-title p {
+    font-size: 1rem;
+}
+
+/* Main registration count panel */
+.registration-count-panel {
+    background-color: #fefefe; /* Light gray background color */
+    border: 1px solid #ddd;    /* Optional border for clarity */
+    width: 80%;                /* Full width of the container */
+    height: 100vh;             /* Make the container take full height */
+    margin: 20px auto;         /* Center the panel horizontally and add vertical margin */
+    padding: 10px;             /* Add padding for content spacing */
+    border-radius: 2px;        /* Add rounded corners for better aesthetics */
+    position: relative;        /* Allows the side panel and top panel to stack properly */
+    display: flex;             /* Use flexbox for better alignment */
+    flex-direction: column;    /* Stack child panels vertically */
+    gap: 10px;                 /* Add space between the panels */
+}
+
+/* Top panel with flex layout */
+.top-panel {
+    display: flex;             /* Use flexbox for horizontal layout */
+    gap: 10px;                 /* Add some space between panels */
+    height: 50px;              /* Set a fixed height for the top panel */
+}
+
+.top-left-panel {
+    background-color: #e8e8e8; /* Light gray background color */
+    border: 1px solid #ccc;    /* Subtle border for definition */
+    width: 290px;              /* Fixed width for the side panel */
+    height: 100%;              /* Adjust the height to the height of the top panel */
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1); /* Add a shadow for depth */
+    padding: 10px;             /* Padding for content spacing */
+    border-radius: 2px;        /* Match the parent’s rounded corners */
+    overflow-y: hidden;        /* Hides the vertical scrollbar */
+    flex-shrink: 0;            /* Prevent shrinking */
+}
+
+.top-left-panel h1 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ed8936; /* Adjust the color as needed */
+    margin: 0; /* Remove default margin for a cleaner look */
+    text-transform: uppercase; /* Optional: Makes the text uppercase */
+}
+.top-left-panel p {
+    font-size: 12px;          /* Set a smaller size for the paragraph */
+    color: #555;              /* Subtle text color */
+    line-height: 1;         /* Adjust line height for readability */
+    margin: 0;                /* Remove default margin for clean spacing */
+}
+
+
+/* Right part of the top panel */
+.top-right-panel {
+    background-color: #e8e8e8; /* Background color for main panel */
+    border: 1px solid #ccc;    /* Subtle border for definition */
+    flex: 1;                   /* Take up remaining horizontal space */
+    height: 100%;              /* Adjust the height to the height of the top panel */
+    border-radius: 2px;        /* Match the parent’s rounded corners */
+    overflow-y: auto;          /* Add scroll if content overflows */
+    padding: 10px;             /* Padding for content spacing */
+}
+
+/* Content panel containing side and main panels */
+.content-panel {
+    margin-top: 20px;
+    display: flex;             /* Use flexbox for horizontal layout */
+    flex: 1;                   /* Take up remaining space in the container */
+    gap: 10px;                 /* Add space between side and main panels */
+}
+
+/* Side panel - fixed width */
+.side-panel {
+    background-color: #e8e8e8; /* Light gray background color */
+    border: 1px solid #ccc;    /* Subtle border for definition */
+    width: 270px;              /* Fixed width for the side panel */
+    height: auto;              /* Take full height of the content panel */
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1); /* Add a shadow for depth */
+    padding: 20px;             /* Add padding for content spacing */
+    border-radius: 2px;        /* Match the parent’s rounded corners */
+    overflow-y: auto;          /* Add scroll if content overflows */
+    flex-shrink: 0;            /* Prevent shrinking */
+}
+.search-bar {
+    margin-bottom: 15px;      /* Space below the search bar */
+}
+
+.search-bar input {
+    width: 92%;              /* Make input take up full width */
+    padding: 8px 10px;        /* Inner padding for comfortable typing */
+    border: 1px solid #ccc;   /* Subtle border */
+    border-radius: 4px;       /* Rounded corners */
+    font-size: 14px;          /* Font size for input */
+    outline: none;            /* Remove default focus outline */
+    background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="%23ccc" viewBox="0 0 24 24"%3E%3Cpath d="M21.71 20.29l-5.3-5.3A7 7 0 1010 17a7 7 0 005.59-2.88l5.3 5.3a1 1 0 001.42-1.42zM10 15a5 5 0 115-5 5 5 0 01-5 5z"/%3E%3C/svg%3E') no-repeat right 10px center;
+    background-size: 16px;    /* Size of the search icon */
+}
+
+.barangay-checkboxes {
+    margin-top: 20px;
+    max-height: 700px;         /* Set a fixed height for the scrollable area */
+    overflow-y: auto;          /* Enable vertical scrolling if content exceeds height */
+    padding-right: 10px; 
+}
+
+.barangay-checkboxes p {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.barangay-checkboxes label {
+    display: block;           /* Stack each checkbox on a new line */
+    font-size: 18px;          /* Adjust font size */
+    margin-bottom: 1px;       /* Space between checkboxes */
+    cursor: pointer;         /* Change cursor to pointer to indicate interactivity */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+}
+
+.barangay-checkboxes label:hover {
+    background-color: #edf2f7; /* Light background on hover */
+    color: #ed8936;             /* Change text color on hover */
+}
+/* Main panel takes remaining space */
+.main-panel {
+    background-color: #e8e8e8; /* White background for main panel */
+    border: 1px solid #ccc;    /* Subtle border for definition */
+    flex: 1;                   /* Take up remaining horizontal space */
+    border-radius: 2px;        /* Match the parent’s rounded corners */
+    overflow-y: auto;          /* Add scroll if content overflows */
+    padding: 20px;             /* Add padding for content spacing */
+    align-items: center;
+}
+
+/* Media Queries for Responsiveness */
+
+/* For screens less than 768px (tablets, small screens) */
+@media (max-width: 768px) {
+    .registration-count-panel {
+        width: 100%;            /* Full width for small screens */
+        padding: 5px;           /* Reduce padding */
+    }
+
+    /* Adjust top panel layout */
+    .top-panel {
+        flex-direction: column; /* Stack top-left and top-right vertically */
+        height: auto;           /* Remove fixed height */
+    }
+
+    .top-left-panel,
+    .top-right-panel {
+        width: 100%;            /* Make top panels take full width */
+        height: auto;           /* Allow flexible height */
+    }
+
+    /* Content panel adjustments */
+    .content-panel {
+        flex-direction: column; /* Stack side and main panels vertically */
+    }
+
+    .side-panel {
+        width: 100%;            /* Make side panel take full width */
+        height: auto;           /* Flexible height */
+    }
+
+    .main-panel {
+        width: 100%;            /* Main panel takes full width */
+        height: auto;           /* Flexible height */
+    }
+}
+
+/* For screens less than 480px (mobile screens) */
+@media (max-width: 480px) {
+    .top-left-panel,
+    .top-right-panel {
+        padding: 5px;           /* Reduce padding */
+    }
+
+    .side-panel,
+    .main-panel {
+        padding: 10px;          /* Adjust padding for smaller screens */
+    }
+}
+
+
+
+
+/* Basic styling for tabs */
+.tabs {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    border-bottom: 2px solid #e53e3e;
+}
+
+.tab {
+    padding: 10px 20px;
+    cursor: pointer;
+    border: 1px solid #e53e3e;
+    border-bottom: none;
+    background-color: #fff;
+    color: #e53e3e;
+    font-weight: bold;
+    margin: 0 5px;
+    border-radius: 5px 5px 0 0;
+}
+
+.tab.active {
+    background-color: #e53e3e;
+    color: #fff;
+}
+
+/* Hide all tab contents by default */
+.tab-content {
+    display: none;
+    padding: 20px;
+    min-height: 500px; /* Adjust to prevent collapsing */
+}
+
+/* Show active tab content */
+.tab-content.active {
+    display: block;
+}
+
+
+
+.ChoroplethMap {
+    display: flex; /* Use Flexbox for layout */
+    flex-direction: column; /* Stack items vertically */
+    justify-content: center; /* Center items vertically */
+    align-items: center; /* Center items horizontally */
+    height: 100vh; /* Full viewport height */
+    text-align: center; /* Center text in the heading */
+    padding: 20px; /* Optional padding for spacing */
+    box-sizing: border-box; /* Ensure padding is included in height/width */
+}
+
+/* Set height and width for the map container */
+#map {
+    height: 600px; /* Adjust as needed */
+    width: 100%;   /* Full width */
+    margin: 0 auto;
+    border: 1px solid #ccc; /* Optional for visualization */
+}
+
+/*table*/
+.registration-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 16px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.registration-table thead {
+    background-color: #e62314;
+    color: white;
+}
+
+.registration-table th,
+.registration-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.registration-table th {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.registration-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.registration-table tbody tr:nth-child(odd) {
+    background-color: #fff;
+}
+
+.registration-table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+.registration-table td {
+    color: #333;
+}
+
+.registration-table tfoot tr {
+    font-weight: bold;
+    background-color: #f0f0f0;
+}
+
+.registration-table tfoot td {
+    text-align: center;
+    border-top: 2px solid #ccc;
+}
+
+
+/* Style the legend */
+.info.legend {
+    background: rgba(255, 255, 255, 0.8); /* White background with 80% opacity */
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3); /* Slightly darker shadow for better visibility */
+    font-size: 12px;
+}
+
+
+.info.legend i {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+
+
+

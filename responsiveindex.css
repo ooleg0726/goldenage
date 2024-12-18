@@ -1,0 +1,941 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background: linear-gradient(to right, #e62314, #f19e18);
+    position: relative;
+    z-index: 10;
+}
+
+header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transition: background-color 0.3s ease, padding 0.3s ease;
+    z-index: 1000;
+    color: #fff; /* White font color for header text */
+}
+
+.logo-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.left-logos, .menu-container {
+    display: flex;
+    align-items: center;
+}
+
+.left-logos, .right-logos {
+    display: flex;
+    align-items: center;
+}
+.left-logos .logo {
+    margin-right: 10px; /* Adjust spacing between left logos */
+}
+
+.right-logos .logo {
+    margin-left: 10px; /* Adjust spacing between right logos */
+}
+
+.logo {
+    height: 50px;
+    margin-right: 10px;
+    transition: height 0.3s;
+}
+
+.logo-label {
+    color: white;
+    font-weight: bold;
+    line-height: 1.2;
+    text-align: left;
+    white-space: normal;
+    word-wrap: break-word;
+    max-width: 100%;
+}
+
+
+
+.nav-links {
+    display: flex;
+    gap: 20px; /* Adjusts spacing between navigation links */
+    margin-right: 20px; /* Adds space between the last logo and the menu */
+}
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 5px;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50%;
+    height: 2px;
+    background-color: yellow;
+}
+
+.menu-toggle {
+    display: none;
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #fff; /* White color for menu toggle button */
+}
+
+.menu-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* Media Queries for Small Screens */
+@media (max-width: 768px) {
+    header {
+        padding: 0px 0;
+    }
+
+    .logo {
+        height: 40px;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .menu-container {
+        display: none;
+        position: fixed;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: linear-gradient(to right, #e62314, #f19e18);
+        flex-direction: column;
+        opacity: 0.9;
+        transition: opacity 0.3s;
+    }
+
+    .menu-container.show {
+        display: flex;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .nav-links a {
+        padding: 10px 0;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-label {
+        font-size: 12px;
+        line-height: 1.1;
+    }
+
+    .logo {
+        height: 30px;
+    }
+
+    .menu-container {
+        width: 100%;
+    }
+}
+
+
+
+.registration {
+    background: linear-gradient(to right, #e62314, #f19e18);
+    color: white;
+    padding: 30px 0;
+    margin-top: 50px;
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+    flex-wrap: wrap; /* Ensures responsiveness */
+}
+
+.text-content {
+    flex: 1;
+    text-align: left;
+    padding-right: 20px;
+    margin-bottom: 20px;
+}
+
+.text-content h1 {
+    font-size: 4.5em;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.text-content p {
+    font-size: 1.5em;
+    line-height: 1.5;
+}
+
+.image-content {
+    flex: 1;
+    text-align: right;
+}
+
+.image-content img {
+    max-width: 90%;
+    height: auto;
+    border-radius: 10px; /* Adds a subtle rounded effect */
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.9); /* Adds depth */
+    transition: transform 0.3s ease, box-shadow 0.39s ease; /* Smooth hover effect */
+}
+
+.image-content img:hover {
+    transform: scale(1.05); /* Slight zoom-in effect on hover */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5); /* More pronounced shadow on hover */
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 1024px) {
+    .text-content h1 {
+        font-size: 2.5em; /* Adjust font size */
+    }
+
+    .text-content p {
+        font-size: 1em; /* Adjust font size */
+    }
+}
+
+@media (max-width: 768px) {
+    .content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .text-content {
+        padding-right: 0;
+        margin-bottom: 20px;
+    }
+
+    .image-content {
+        text-align: center;
+        padding-top: 20px;
+    }
+
+    .text-content h1 {
+        font-size: 2em;
+    }
+
+    .text-content p {
+        font-size: 0.95em;
+    }
+}
+
+@media (max-width: 480px) {
+    .text-content h1 {
+        font-size: 1.5em;
+    }
+
+    .text-content p {
+        font-size: 0.85em;
+    }
+
+    .registration {
+        padding: 20px 10px; /* Reduce padding for small screens */
+    }
+    .image-content {
+        text-align: center;
+    }
+}
+
+
+.stats-section {
+    background: #ffffff;
+    padding: 40px 20px;
+    min-height: 30vh; /* Allows the section to grow with content */
+    display: flex; /* Enable Flexbox */
+    flex-direction: column; /* Arrange children in a column */
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+    overflow: hidden; /* Contain any overflowing content */
+}
+
+
+.registrants,
+.links {
+    flex: 1;
+    margin: 10px; /* Space between columns */
+}
+
+.stats-container {
+    display: flex;
+    justify-content: space-between; /* Align columns to the left and right */
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    max-width: 1300px; /* Max width of container */
+    margin: 0 auto; /* Center container horizontally */
+}
+
+h1, h2, h3 {
+    margin: 0 0 15px 0;
+}
+
+.info {
+    font-style: italic;
+    margin: 10px 0;
+    font-size: 1em; /* Adjust size as needed */
+}
+
+.action-buttons {
+    margin: 25px 0;
+}
+
+.stats-section .registrants h1 {
+    font-size: 2.3em; /* Adjust size as needed */
+    margin-bottom: 10px; /* Space below the heading */
+}
+
+.stats-section .registrants h2 {
+    font-size: 5.5em; /* Adjust size as needed */
+    color: #e62314; /* Optional: Color to match button */
+    margin-bottom: 20px; /* Space below the subheading */
+}
+
+.links {
+    display: flex;
+    justify-content: space-between; /* Aligns items to the left and right */
+    margin-left: 200px; /* Adjust the value as needed */
+}
+
+.register-info, .registration-count {
+    display: flex;
+    align-items: center; /* Aligns items vertically centered */
+}
+
+.icon {
+    height: 120px; /* Adjust size as needed */
+    margin-right: 50px; /* Space between icon and text */
+}
+
+.text h3 {
+    margin: 0; /* Remove default margin */
+    font-size: 1.6em; /* Adjust as needed */
+}
+
+.text a {
+    color: #e62314; /* Match link color to button color */
+    text-decoration: none;
+    font-weight: normal;
+    font-size: 1.4em; /* Adjust as needed */
+}
+
+.text a:hover {
+    text-decoration: underline; /* Optional: Underline on hover */
+}
+
+.register-button,
+.verify-button {
+    display: inline-block;
+    width: 250px; /* Set a specific width */
+    height: 40px; /* Set a specific height */
+    line-height: 40px; /* Vertically center the text within the button */
+    text-decoration: none;
+    font-weight: bold;
+    color: white; /* Text color */
+    background-color: #e62314; /* Button background color */
+    border: 2px solid #e62314; /* Border color to match the background */
+    border-radius: 0; /* Sharp edges */
+    margin-right: 10px;
+    text-align: center; /* Center text within the button */
+    transition: background-color 0.3s, border-color 0.3s, transform 0.3s; /* Smooth transition for hover effect */
+    font-size: 16px; /* Adjust font size if necessary */
+}
+
+
+.register-button:hover,
+.verify-button:hover {
+    background-color: #ed8936; /* Darker shade of red for hover effect */
+    border-color: #ed8936; /* Darker shade for border on hover */
+    transform: scale(1.1); /* Slightly enlarge the button */
+}
+
+.links {
+    display: flex;
+    flex-direction: column;
+}
+
+.links h3 {
+    margin-bottom: 10px;
+}
+
+.links a {
+    color: #e62314; /* Same color as the buttons */
+    text-decoration: none;
+    font-weight: normal; /* Make links bold, similar to buttons */
+}
+
+.links a:hover {
+    color: #ed8936; /* Change link color on hover to match button hover effect */
+    text-decoration: underline; /* Optional: Underline on hover */
+}
+/* Media Queries for Responsive Design */
+
+/* Tablet and small desktop view (768px and below) */
+@media (max-width: 768px) {
+    .stats-container {
+        flex-direction: column; /* Stack sections vertically on smaller screens */
+        align-items: center; /* Center align items */
+    }
+
+    .registrants, .links {
+        width: 100%; /* Full width on small screens */
+        margin: 20px 0; /* Adjust margin on small screens */
+        text-align: center; /* Center align text */
+    }
+
+    .links {
+        display: flex; /* Flexbox for layout */
+        flex-direction: row; /* Keep items side-by-side */
+        align-items: center; /* Vertically center the content */
+        justify-content: center; /* Horizontally center the content */
+        gap: 20px; /* Add spacing between the sections */
+        margin: 20px auto; /* Center the container horizontally */
+        width: 100%; /* Ensure it spans the available width */
+        text-align: center; /* Center the text inside each item */
+    }
+
+    .links .register-info, .links .registration-count {
+        display: flex; /* Flex container for each item */
+        flex-direction: column; /* Stack the icon and text vertically within each item */
+        align-items: center; /* Center the icon and text */
+    }
+
+    .icon {
+        margin-bottom: 10px; /* Space between icon and text */
+    }
+    .icon {
+        height: 100px; /* Reduce icon size */
+    }
+
+    .text h3 {
+        font-size: 1.2em; /* Adjust heading size */
+    }
+
+    .action-buttons {
+        display: flex; /* Ensure it's a flex container */
+        flex-direction: column; /* Stack buttons vertically */
+        align-items: center; /* Center buttons horizontally */
+        width: 100%; /* Full width for the container */
+        gap: 10px; /* Add spacing between buttons */
+    }
+
+    .register-button, .verify-button {
+        width: 75%; /* Set buttons to 75% width */
+        margin-bottom: 10px; /* Space between rows if wrapping occurs */
+        text-align: center; /* Center align text inside buttons */
+    }
+}
+
+/* Small screen, mobile view (480px and below) */
+@media (max-width: 480px) {
+    .stats-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .registrants h1, .registrants h2 {
+        font-size: 1.2em; /* Reduce heading size */
+    }
+
+    .registrants h2 {
+        font-size: 2em; /* Reduce subheading size */
+    }
+
+    .icon {
+        height: 50px; /* Further reduce icon size */
+    }
+
+    .action-buttons {
+        display: flex; /* Ensure it's a flex container */
+        flex-direction: column; /* Stack buttons vertically */
+        align-items: center; /* Center buttons horizontally */
+        width: 100%; /* Full width for the container */
+        gap: 10px; /* Add spacing between buttons */
+    }
+
+    .register-button, .verify-button {
+        width: 75%; /* Set buttons to 75% width */
+        margin-bottom: 10px; /* Add space between rows if wrapping occurs */
+        text-align: center; /* Center align text inside buttons */
+        padding: 8px 15px; /* Adjust padding for smaller buttons */
+    }
+
+    .links {
+        flex-direction: row; /* Keep items side-by-side */
+        justify-content: center; /* Horizontally center the content */
+        gap: 10px; /* Reduce spacing between the sections */
+    }
+
+    .links .register-info, .links .registration-count {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .icon {
+        margin-bottom: 8px;
+    }
+
+    .links h3 {
+        font-size: 1.1em; /* Reduce heading size */
+    }
+
+    .links a {
+        font-size: 0.9em; /* Reduce link font size */
+    }
+
+    .text h3 {
+        font-size: 1em; /* Reduce heading size */
+    }
+
+    .text a {
+        font-size: 0.9em; /* Adjust font size for smaller screens */
+    }
+}
+
+
+/* Service Section */
+/* Service Section */
+.service-section {
+    background: #f9f9f9;
+    padding: 10px 20px;
+    text-align: center; /* Center align text horizontally */
+    min-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Vertically center the content */
+    align-items: center; /* Horizontally center the content */
+}
+
+/* Ensure both headings are centered horizontally and on separate rows */
+.center-heading {
+    text-align: center; /* Centers text horizontally */
+    display: block;     /* Ensures the element takes up the full width */
+    margin: 0 auto;     /* Optional: ensures the element is centered in its container */
+}
+
+/* Service Section Title */
+.section-heading {
+    font-size: 3.8em;
+    color: black;
+    margin-bottom: 20px; /* Space below the heading */
+    font-weight: bold;
+    width: 100%; /* Forces it to occupy full width */
+}
+
+/* Service Subsection Title */
+.section-ourservices {
+    font-size: 2em;
+    color: #e62314;
+    margin-bottom: 20px; /* Space below the heading */
+    font-weight: bold;
+    width: 100%; /* Forces it to occupy full width */
+}
+
+/* Service List */
+.service-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center; /* Center items horizontally */
+    margin: 0 auto; /* Ensure the list is centered */
+}
+
+/* Service Item */
+.service-item {
+    background-color: #fff;
+    border: 2px solid #ccc;
+    border-radius: 1px;
+    padding: 20px;
+    text-align: center;
+    width: calc(50% - 20px); /* Adjust width for spacing */
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.service-item:hover {
+    transform: translateY(-10px);
+}
+
+.service-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.service-title {
+    font-size: 2em;
+    margin-bottom: 15px;
+    font-weight: bold; /* Bold for better visibility */
+}
+
+.service-description {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    flex-grow: 1;
+    color: #555; /* Slightly darker text for the description */
+}
+
+.service-button {
+    display: inline-block;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: white; /* Text color */
+    background-color: #e62314; /* Button background color */
+    border: 2px solid #e62314; /* Border color to match the background */
+    /*border-radius: 2px; /* Slightly rounded corners */
+    text-align: center; /* Center text within the button */
+    transition: background-color 0.3s, border-color 0.3s, transform 0.2s; /* Smooth transitions */
+    line-height: 40px; /* Vertically center the text within the button */
+    font-size: 1.7em;
+}
+
+.service-button:hover {
+    background-color: #ed8936; /* Darker shade of red for hover effect */
+    border-color: #ed8936; /* Darker shade for border on hover */
+    transform: scale(1.05); /* Slight zoom effect */
+    text-decoration: underline; /* Add underline on hover */
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .service-item {
+        width: calc(100% - 20px); /* Full width on smaller screens */
+    }
+
+    .section-title {
+        font-size: 2em; /* Adjust title size */
+    }
+
+    .service-button {
+        padding: 12px 24px; /* Slightly larger padding for buttons on medium screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .section-title {
+        font-size: 1.5em; /* Smaller font size for mobile screens */
+        margin-bottom: 15px; /* Less space under the title */
+    }
+
+    .service-title {
+        font-size: 1.2em; /* Smaller font size for service titles */
+    }
+
+    .service-description {
+        font-size: 0.9em; /* Smaller font size for descriptions */
+    }
+
+    .service-button {
+        padding: 8px 16px; /* Adjust padding for buttons */
+        font-size: 14px; /* Smaller font size for buttons */
+    }
+
+    .service-item {
+        padding: 15px; /* Adjust padding for smaller devices */
+    }
+}
+
+/* Announcement Section */
+.announcement-section {
+    background: white;
+    padding: 40px 20px;
+    text-align: left;
+}
+
+.announcement-section .content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-size: 2.5em; /* Adjust size for the title */
+    color: #e62314; /* Match the color scheme */
+    margin-bottom: 20px; /* Space below the title */
+    text-align: left; /* Align the title to the left */
+    display: block; /* Ensure the title is on its own line */
+    width: 100%; /* Take up the full width */
+}
+
+/* Announcement list styling */
+.announcement-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Individual Announcement Item */
+.announcement-item {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 0px; /* Sharp edges */
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px; /* Fixed width */
+    height: 500px; /* Fixed height */
+    box-sizing: border-box;
+    overflow: hidden;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease;
+}
+
+.announcement-item:hover {
+    transform: scale(1.05); /* Optional hover effect */
+}
+
+.announcement-thumbnail {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border: 1px solid #ddd; 
+    border-radius: 0px; 
+    padding: 5px; 
+    background-color: #fff; 
+    width: 250px;
+    height: 150px; 
+}
+
+/* Ensure image scales within the container */
+.announcement-thumbnail img {
+    max-width: 100%; 
+    max-height: 100%; 
+    object-fit: cover; 
+    border-radius: 4px; 
+}
+
+/* Announcement details styling */
+.announcement-details {
+    padding: 15px;
+    flex-grow: 1;
+}
+
+.announcement-date {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 10px;
+}
+
+.announcement-title {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+    color: #ff5a00;
+    font-weight: bold;
+}
+
+.announcement-description {
+    font-size: 1.em;
+    color: #555;
+    line-height: 1.5;
+}
+
+/* Responsive Design */
+
+/* For screens between 768px and 992px */
+@media (max-width: 992px) {
+    .announcement-item {
+        width: 45%; /* Adjust width for medium screens */
+        height: auto; /* Auto height for flexibility */
+    }
+    .announcement-thumbnail {
+        width: 200px; 
+        height: 120px; 
+    }
+}
+
+/* For screens between 576px and 768px */
+@media (max-width: 768px) {
+    .announcement-item {
+        width: 100%; /* Full width for small screens */
+        height: auto; /* Auto height for flexibility */
+    }
+
+    .announcement-thumbnail {
+        width: 150px; 
+        height: 100px; 
+    }
+}
+
+/* For screens less than 576px */
+@media (max-width: 576px) {
+    .announcement-item {
+        width: 100%; 
+        height: auto;
+        padding: 10px; 
+    }
+
+    .announcement-thumbnail {
+        width: 95%; 
+        height: 150px; 
+    }
+
+    .section-title {
+        font-size: 1.2em; /* Smaller font size for smaller screens */
+    }
+
+    .announcement-title {
+        font-size: 16px; /* Adjust title size */
+    }
+
+    .announcement-description {
+        font-size: 13px; /* Adjust description font size */
+    }
+}
+
+
+/* About Section */
+.about-section {
+    background: #f4f4f4; /* Light background color for contrast */
+    padding: 40px 20px; /* Spacing around the section */
+    text-align: justify; /* Center align text */
+}
+
+.about-section .content {
+    max-width: 1200px; /* Maximum width of the content */
+    margin: 0 auto; /* Center align the content */
+    align-items: center;
+}
+
+.about-section .section-title {
+    font-size: 2.5em; /* Larger font size for emphasis */
+    color: #e62314; /* Match the color scheme */
+    margin-bottom: 20px; /* Space below the title */
+}
+
+.about-section p {
+    font-size: 1.5em; /* Adjust font size for readability */
+    color: #333; /* Dark text color for better contrast */
+    line-height: 1.6; /* Increase line height for better readability */
+    margin-bottom: 20px; /* Space between paragraphs */
+}
+
+@media (max-width: 768px) {
+    .about-section .section-title {
+        font-size: 2em; /* Adjust font size on smaller screens */
+    }
+
+    .about-section p {
+        font-size: 1em; /* Adjust font size for paragraphs */
+    }
+}
+
+@media (max-width: 480px) {
+    .about-section .section-title {
+        font-size: 1.5em; /* Smaller font size on very small screens */
+    }
+
+    .about-section p {
+        font-size: 0.9em; /* Smaller font size for paragraphs */
+    }
+}
+
+/* Footer Section */
+/* Footer Section */
+footer {
+    background: linear-gradient(to right, #e62314, #f19e18);
+    color: White; /* White text for readability */
+    padding: 10px 10px; /* Padding for spacing */
+    text-align: center; /* Center align text */
+}
+
+.footer-content {
+    max-width: 1200px; /* Maximum width of content */
+    margin: 0 auto; /* Center the content */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center align logos and text */
+}
+
+.footer-logos {
+    margin-bottom: 10px; /* Space between logos and text */
+}
+
+.footer-logos img {
+    width: 80px; /* Set a fixed width for logos */
+    margin: 0 10px; /* Space between logos */
+}
+
+footer p {
+    margin: 5px 0; /* Space between paragraphs */
+    font-size: 14px; /* Adjust font size */
+}
+
+footer a {
+    color: black; /* Orange link color to match theme */
+    text-decoration: none; /* Remove underline */
+}
+
+footer a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .footer-logos img {
+        width: 60px; /* Reduce logo size for smaller screens */
+    }
+    
+    footer p {
+        font-size: 12px; /* Adjust font size for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-logos img {
+        width: 50px; /* Further reduce logo size for mobile */
+    }
+    
+    footer p {
+        font-size: 11px; /* Smaller font size for mobile */
+    }
+}
